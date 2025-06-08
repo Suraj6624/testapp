@@ -110,9 +110,7 @@ class ProfilePage extends StatelessWidget {
             onTap:
                 () => Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const PaymentLogPage(),
-                  ),
+                  MaterialPageRoute(builder: (context) => const Payment()),
                 ),
           ),
           iconLabelItem(
@@ -120,6 +118,7 @@ class ProfilePage extends StatelessWidget {
             iconColor: Colors.orange,
             label: 'Reports',
             onTap: () => showSnack(context, 'Reports clicked'),
+            // icon label icon
           ),
           iconLabelItem(
             icon: Icons.not_interested,
