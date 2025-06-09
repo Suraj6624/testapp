@@ -45,7 +45,7 @@ class _SetUnavailabilityPageState extends State<SetUnavailabilityPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F8F8),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           "Set Unavailability",
@@ -59,13 +59,13 @@ class _SetUnavailabilityPageState extends State<SetUnavailabilityPage> {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
+
         child: Card(
-          elevation: 5,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
+          elevation: 0,
+          color: Colors.white,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(0),
             child: Form(
               key: _formKey,
               child: Column(
@@ -91,7 +91,7 @@ class _SetUnavailabilityPageState extends State<SetUnavailabilityPage> {
                             value == null ? 'Please select a clinic' : null,
                     decoration: _inputDecoration(),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 10),
 
                   _label("Select Date*"),
                   InkWell(
@@ -117,7 +117,7 @@ class _SetUnavailabilityPageState extends State<SetUnavailabilityPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 10),
 
                   _label("Reason for Unavailability (Only visible to you)"),
                   TextFormField(
@@ -125,7 +125,7 @@ class _SetUnavailabilityPageState extends State<SetUnavailabilityPage> {
                     maxLines: 3,
                     decoration: _inputDecoration(hint: "Optional reason..."),
                   ),
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 10),
 
                   Row(
                     children: [
@@ -136,7 +136,7 @@ class _SetUnavailabilityPageState extends State<SetUnavailabilityPage> {
                           style: _buttonStyle(Colors.grey.shade700),
                         ),
                       ),
-                      const SizedBox(width: 16),
+                      const SizedBox(width: 10),
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
@@ -190,10 +190,10 @@ class _SetUnavailabilityPageState extends State<SetUnavailabilityPage> {
       filled: true,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       focusedBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: Colors.black54),
+        borderSide: const BorderSide(color: Colors.black),
         borderRadius: BorderRadius.circular(12),
       ),
-      contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+      contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 14),
     );
   }
 

@@ -258,14 +258,17 @@ class PatientDetailsPage extends StatelessWidget {
   }
 
   Widget _infoRowWithStatus(String label, String status) {
-    Color statusColor = Colors.grey;
+    Color backgroundColor = Colors.grey.shade400;
+    Color textColor = Colors.white;
 
     // ✅ Define color logic
     final statusLower = status.toLowerCase();
     if (statusLower == "booked" || statusLower == "successful") {
-      statusColor = Colors.green;
+      backgroundColor = Colors.lightGreen[700]!;
     } else if (statusLower == "cancelled" || statusLower == "failed") {
-      statusColor = Colors.red;
+      backgroundColor = Colors.red;
+    } else {
+      textColor = Colors.black; // For neutral/unknown status
     }
 
     return Padding(
@@ -293,14 +296,13 @@ class PatientDetailsPage extends StatelessWidget {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: statusColor.withOpacity(0.1),
-                  border: Border.all(color: statusColor),
+                  color: backgroundColor,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
                   status,
                   style: TextStyle(
-                    color: statusColor,
+                    color: textColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 13.5,
                   ),

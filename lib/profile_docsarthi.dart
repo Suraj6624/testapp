@@ -21,6 +21,7 @@ class ProfilePage extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       elevation: 2,
+      color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         onTap: onTap,
@@ -39,6 +40,8 @@ class ProfilePage extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
+              const Spacer(), // Push arrow to the far right
+              const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
             ],
           ),
         ),
@@ -60,6 +63,7 @@ class ProfilePage extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
       ),
+      backgroundColor: Colors.white,
       body: ListView(
         children: [
           iconLabelItem(

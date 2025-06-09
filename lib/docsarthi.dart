@@ -33,6 +33,38 @@ class _DocsarthiState extends State<Docsarthi> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> patients = [
+      {
+        "patientId": "P001",
+        "name": "Rahul Verma",
+        "gender": "Male",
+        "age": 34,
+        "paymentMethod": "Online",
+        "appointmentDate": "26 May 2025",
+        "appointmentTime": "10:30 AM",
+        "status": "Booked",
+      },
+      {
+        "patientId": "P002",
+        "name": "Sneha Shah",
+        "gender": "Female",
+        "age": 29,
+        "paymentMethod": "Cash",
+        "appointmentDate": "27 May 2025",
+        "appointmentTime": "11:15 AM",
+        "status": "Booked",
+      },
+      {
+        "patientId": "P003",
+        "name": "Amit Kumar",
+        "gender": "Male",
+        "age": 45,
+        "paymentMethod": "Online",
+        "appointmentDate": "28 May 2025",
+        "appointmentTime": "09:45 AM",
+        "status": "Booked",
+      },
+    ];
     final DateTime now = DateTime.now();
     final String dayName = DateFormat('EEEE').format(now); // e.g., Thursday
     final String updatedDate = DateFormat('d').format(now); // e.g., 23
@@ -54,37 +86,39 @@ class _DocsarthiState extends State<Docsarthi> {
     final int attemptedCount = 5;
     final int onlinePaymentCount = 8;
 
-    final List<Map<String, String>> backendDataList = [
-      {"title": "Follow-up #1", "subtitle": "Today at 10 AM"},
-      {"title": "New Patient", "subtitle": "Tomorrow at 3 PM"},
-    ];
-
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white38,
+        backgroundColor: Colors.white,
+
         appBar: AppBar(
-          backgroundColor: Colors.white12,
-          centerTitle: true, // ✅ This centers the title
+          backgroundColor: const Color.fromRGBO(46, 51, 69, 1),
+          centerTitle: true,
           automaticallyImplyLeading: false,
-          title: Image.network('https://docsarthi.com/logow.webp', height: 35),
+          title: Container(
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(46, 51, 69, 1.0),
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Image.network(
+              'https://docsarthi.com/logow.webp',
+              height: 35,
+            ),
+          ),
           actions: [
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              decoration: BoxDecoration(
-                // color: Colors.white, // White background
-                shape: BoxShape.circle, // Circular shape
-              ),
+              decoration: const BoxDecoration(shape: BoxShape.circle),
               child: SizedBox(
-                width: 40, // Set width here
-                height: 40, // Set height here
+                width: 40,
+                height: 40,
                 child: PopupMenuButton<String>(
                   color: Colors.white,
-                  icon: Icon(
-                    Icons.more_vert, // Vertical 3 dots
-                    color: Color.fromRGBO(233, 234, 237, 1),
+                  icon: const Icon(
+                    Icons.more_vert,
+                    color: Colors.white, // white icon
                     size: 24,
                   ),
-                  // Custom icon color
                   onSelected: (value) {
                     if (value == 'dashboard') {
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -94,7 +128,6 @@ class _DocsarthiState extends State<Docsarthi> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Logged out')),
                       );
-                      // Implement logout logic
                     }
                   },
                   itemBuilder:
@@ -111,7 +144,6 @@ class _DocsarthiState extends State<Docsarthi> {
                 ),
               ),
             ),
-
             const SizedBox(width: 10),
           ],
         ),
@@ -171,7 +203,7 @@ class _DocsarthiState extends State<Docsarthi> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 12),
+                    SizedBox(height: 14),
                     Row(
                       children: [
                         buildStatCard(
@@ -188,25 +220,107 @@ class _DocsarthiState extends State<Docsarthi> {
                         ),
                       ],
                     ),
+                    // Section 3: Appointments with Cards
+                    Container(
+                      color: Colors.transparent,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0,
+                        vertical: 10,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            'Appointments',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Text(
+                            'View All',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // const SizedBox(height: 10),
+
+                    // Cards displaying patient data
+                    ...patients.map(
+                      (patient) => Column(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PatientCardsPage(),
+                                ),
+                              );
+                            },
+                            borderRadius: BorderRadius.circular(10),
+                            child: Card(
+                              elevation: 1.5,
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12.0,
+                                  vertical: 10,
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    buildInfoRow(
+                                      icon: Icons.person,
+                                      label: 'Name',
+                                      value: patient['name'],
+                                    ),
+                                    const SizedBox(height: 6),
+                                    buildInfoRow(
+                                      icon: Icons.transgender,
+                                      label: 'Gender / Age',
+                                      value:
+                                          '${patient['gender']} / ${patient['age']} yrs',
+                                      iconColor: Colors.purple,
+                                    ),
+                                    const SizedBox(height: 6),
+                                    buildInfoRow(
+                                      icon: Icons.calendar_today,
+                                      label: 'Appointment',
+                                      value:
+                                          '${patient['appointmentDate']}, ${patient['appointmentTime']}',
+                                      iconColor: Colors.indigo,
+                                    ),
+                                    const SizedBox(height: 6),
+                                    buildInfoRow(
+                                      icon: Icons.payment,
+                                      label: 'Payment Mode',
+                                      value: patient['paymentMethod'],
+                                      iconColor: Colors.green,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
 
               // Section 3: Backend Data Cards
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Column(
-                  children:
-                      backendDataList.map((item) {
-                        return Card(
-                          child: ListTile(
-                            title: Text(item['title'] ?? 'No Title'),
-                            subtitle: Text(item['subtitle'] ?? 'No Details'),
-                          ),
-                        );
-                      }).toList(),
-                ),
-              ),
             ],
           ),
         ),
@@ -278,6 +392,46 @@ class _DocsarthiState extends State<Docsarthi> {
     );
   }
 
+  Widget buildInfoRow({
+    required IconData icon,
+    required String label,
+    required String value,
+    Color iconColor = Colors.blueGrey,
+  }) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            Icon(icon, color: iconColor, size: 18),
+            const SizedBox(width: 6),
+            Text(
+              label,
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
+        label == 'Payment Mode'
+            ? Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.lightGreen[700], // Light green background
+                borderRadius: BorderRadius.circular(16), // Rounded corners
+              ),
+              child: Text(
+                value,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white, // Text color
+                ),
+              ),
+            )
+            : Text(value, style: const TextStyle(fontSize: 14)),
+      ],
+    );
+  }
+
   Widget buildStatCard(
     String label,
     int count,
@@ -287,6 +441,7 @@ class _DocsarthiState extends State<Docsarthi> {
     return Expanded(
       child: Card(
         elevation: 2,
+        color: Colors.white,
         margin: const EdgeInsets.symmetric(horizontal: 6),
         child: Padding(
           padding: const EdgeInsets.all(10),
