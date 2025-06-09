@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:testapp/appointment.dart';
 import 'package:testapp/manage_clinic_page.dart';
 import 'package:testapp/scheduled_appointment.dart';
+import 'package:testapp/patient_details_page.dart';
 
 class Docsarthi extends StatefulWidget {
   const Docsarthi({super.key});
@@ -229,20 +230,32 @@ class _DocsarthiState extends State<Docsarthi> {
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Text(
+                        children: [
+                          const Text(
                             'Appointments',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          Text(
-                            'View All',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.blue,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder:
+                                      (context) =>
+                                          PatientCardsPage(), // Replace with your page
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              'View All',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.blue,
+                              ),
                             ),
                           ),
                         ],
@@ -260,7 +273,7 @@ class _DocsarthiState extends State<Docsarthi> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => PatientCardsPage(),
+                                  builder: (context) => PatientDetailsPage(),
                                 ),
                               );
                             },
