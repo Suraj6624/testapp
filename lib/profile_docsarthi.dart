@@ -110,7 +110,7 @@ class ProfilePage extends StatelessWidget {
             onTap:
                 () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Payment()),
+                  MaterialPageRoute(builder: (context) => Payment()),
                 ),
           ),
           iconLabelItem(
