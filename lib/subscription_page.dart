@@ -24,7 +24,6 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(46, 51, 69, 1.0),
       appBar: AppBar(
         title: const Text(
           "Subscription",
@@ -35,6 +34,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
         iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: true,
       ),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
@@ -53,6 +53,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
 
   Widget _benefitsCard() {
     return Card(
+      color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 6,
       child: Padding(
@@ -119,6 +120,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
 
   Widget _planSelectionCard() {
     return Card(
+      color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 6,
       child: Padding(
@@ -220,9 +222,10 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
     required String value,
   }) {
     return Card(
+      color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       elevation: 2,
-      color: Colors.grey[100],
+
       child: RadioListTile<String>(
         value: value,
         groupValue: selectedPlan,

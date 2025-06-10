@@ -7,6 +7,8 @@ import 'package:testapp/manage_clinic_page.dart';
 import 'package:testapp/scheduled_appointment.dart';
 import 'package:testapp/patient_details_page.dart';
 
+import 'package:testapp/registration_page.dart';
+
 class Docsarthi extends StatefulWidget {
   const Docsarthi({super.key});
 
@@ -121,9 +123,12 @@ class _DocsarthiState extends State<Docsarthi> {
                     size: 24,
                   ),
                   onSelected: (value) {
-                    if (value == 'dashboard') {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Dashboard page click')),
+                    if (value == 'registration') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RegisterScreen(),
+                        ),
                       );
                     } else if (value == 'logout') {
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -134,8 +139,8 @@ class _DocsarthiState extends State<Docsarthi> {
                   itemBuilder:
                       (BuildContext context) => <PopupMenuEntry<String>>[
                         const PopupMenuItem<String>(
-                          value: 'dashboard',
-                          child: Text('Dashboard'),
+                          value: 'registration',
+                          child: Text('registration'),
                         ),
                         const PopupMenuItem<String>(
                           value: 'logout',

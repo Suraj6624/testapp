@@ -28,10 +28,12 @@ class ManageClinicPage extends StatelessWidget {
         backgroundColor: Color.fromRGBO(46, 51, 69, 1.0),
         iconTheme: IconThemeData(color: Colors.white),
       ),
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(20),
 
         child: Card(
+          color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),

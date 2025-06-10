@@ -19,15 +19,17 @@ class _StaffPageState extends State<StaffPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Staff Details"),
-        backgroundColor: const Color.fromRGBO(46, 51, 69, 1),
-        foregroundColor: Colors.white,
-        centerTitle: true,
-      ),
-      body: SafeArea(
-        child: Padding(
+    return SafeArea(
+      // ✅ Wrapped in SafeArea
+      child: Scaffold(
+        backgroundColor: Colors.white, // ✅ White background
+        appBar: AppBar(
+          title: const Text("Staff Details"),
+          backgroundColor: const Color.fromRGBO(46, 51, 69, 1),
+          foregroundColor: Colors.white,
+          centerTitle: true,
+        ),
+        body: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
@@ -35,34 +37,31 @@ class _StaffPageState extends State<StaffPage> {
             ],
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final result = await Navigator.push<Map<String, String>>(
-            context,
-            MaterialPageRoute(builder: (context) => const AddStaffPage()),
-          );
-          if (result != null) {
-            _addStaff(result);
-          }
-        },
-        backgroundColor: Colors.green,
-        child: const Icon(Icons.add),
-        tooltip: "Add Staff",
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            final result = await Navigator.push<Map<String, String>>(
+              context,
+              MaterialPageRoute(builder: (context) => const AddStaffPage()),
+            );
+            if (result != null) {
+              _addStaff(result);
+            }
+          },
+          backgroundColor: Colors.green,
+          child: const Icon(Icons.add),
+          tooltip: "Add Staff",
+        ),
       ),
     );
   }
 
   Widget _buildStaffCard(Map<String, String> staff) {
     return Card(
-      margin: const EdgeInsets.only(bottom: 20), // More space between cards
+      margin: const EdgeInsets.only(bottom: 20),
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 20,
-          horizontal: 16,
-        ), // Better inner padding
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -80,7 +79,6 @@ class _StaffPageState extends State<StaffPage> {
             _buildInfoRow("Status", staff['status']),
             const SizedBox(height: 20),
             Center(
-              // Center aligned buttons
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
