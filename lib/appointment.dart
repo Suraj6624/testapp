@@ -83,7 +83,7 @@ class BookAppointmentFormState extends State<BookAppointmentForm> {
             keyboardType: keyboardType,
             decoration: InputDecoration(
               filled: true,
-              fillColor: Colors.grey[100],
+              fillColor: Colors.white,
               contentPadding: EdgeInsets.symmetric(
                 horizontal: 10,
                 vertical: 12,
@@ -146,7 +146,7 @@ class BookAppointmentFormState extends State<BookAppointmentForm> {
 
             decoration: InputDecoration(
               filled: true,
-              fillColor: Colors.grey[100],
+              fillColor: Colors.white,
               contentPadding: EdgeInsets.symmetric(
                 horizontal: 10,
                 vertical: 12,
@@ -368,16 +368,14 @@ class BookAppointmentFormState extends State<BookAppointmentForm> {
                           },
                           decoration: InputDecoration(
                             filled: true,
-                            fillColor: Colors.grey[100],
+                            fillColor: Colors.white,
                             contentPadding: EdgeInsets.symmetric(
                               horizontal: 10,
                               vertical: 12,
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(
-                                color: Colors.grey.shade400,
-                              ),
+                              borderSide: BorderSide(color: Colors.white),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),

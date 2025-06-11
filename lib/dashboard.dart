@@ -154,6 +154,7 @@ class Dashboard_Page extends StatelessWidget {
                   const SizedBox(height: 10),
                   ...backendDataList.map((item) {
                     return Card(
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -203,6 +204,7 @@ class Dashboard_Page extends StatelessWidget {
         height: 100,
         margin: const EdgeInsets.symmetric(horizontal: 6),
         child: Card(
+          color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),

@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     // Delay for 3 seconds and navigate to Docsarthi screen
-    Future.delayed(const Duration(seconds: 30), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const Docsarthi()),

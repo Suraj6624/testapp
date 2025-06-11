@@ -55,7 +55,7 @@ class _UnavailabilityPageState extends State<UnavailabilityPage> {
                     final item = unavailabilityList[index];
                     return Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade50,
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -132,11 +132,11 @@ class _UnavailabilityPageState extends State<UnavailabilityPage> {
               addUnavailability(result);
             }
           },
-          backgroundColor: Colors.grey.shade200,
+          backgroundColor: Colors.white,
           elevation: 3,
           icon: const Icon(Icons.add, color: Colors.black87),
           label: const Text(
-            "Add Unavailability",
+            "Add",
             style: TextStyle(
               color: Colors.black87,
               fontWeight: FontWeight.w500,

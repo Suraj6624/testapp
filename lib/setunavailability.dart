@@ -91,7 +91,7 @@ class _SetUnavailabilityPageState extends State<SetUnavailabilityPage> {
                             value == null ? 'Please select a clinic' : null,
                     decoration: _inputDecoration(),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
 
                   _label("Select Date*"),
                   InkWell(
@@ -117,7 +117,7 @@ class _SetUnavailabilityPageState extends State<SetUnavailabilityPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
 
                   _label("Reason for Unavailability (Only visible to you)"),
                   TextFormField(
@@ -125,7 +125,7 @@ class _SetUnavailabilityPageState extends State<SetUnavailabilityPage> {
                     maxLines: 3,
                     decoration: _inputDecoration(hint: "Optional reason..."),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
 
                   Row(
                     children: [
@@ -133,10 +133,12 @@ class _SetUnavailabilityPageState extends State<SetUnavailabilityPage> {
                         child: ElevatedButton(
                           onPressed: () => Navigator.pop(context),
                           child: const Text("Close"),
-                          style: _buttonStyle(Colors.grey.shade700),
+                          style: _buttonStyle(
+                            const Color.fromARGB(255, 160, 153, 153),
+                          ),
                         ),
                       ),
-                      const SizedBox(width: 10),
+                      const SizedBox(width: 20),
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
@@ -157,8 +159,10 @@ class _SetUnavailabilityPageState extends State<SetUnavailabilityPage> {
                               );
                             }
                           },
-                          child: const Text("Set Unavailability"),
-                          style: _buttonStyle(Colors.grey.shade800),
+                          child: const Text("Unavailability"),
+                          style: _buttonStyle(
+                            const Color.fromARGB(255, 160, 153, 153),
+                          ),
                         ),
                       ),
                     ],

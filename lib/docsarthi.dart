@@ -127,7 +127,7 @@ class _DocsarthiState extends State<Docsarthi> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RegisterScreen(),
+                          builder: (context) => RegistrationPage(),
                         ),
                       );
                     } else if (value == 'logout') {
