@@ -9,6 +9,8 @@ import 'package:testapp/patient_details_page.dart';
 
 import 'package:testapp/registration_page.dart';
 
+import 'package:testapp/learningpage.dart';
+
 class Docsarthi extends StatefulWidget {
   const Docsarthi({super.key});
 
@@ -131,8 +133,9 @@ class _DocsarthiState extends State<Docsarthi> {
                         ),
                       );
                     } else if (value == 'logout') {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Logged out')),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Learning()),
                       );
                     }
                   },
