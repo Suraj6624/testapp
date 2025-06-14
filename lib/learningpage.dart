@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/repor_page.dart';
 
 class Learning extends StatefulWidget {
   const Learning({super.key});
@@ -157,41 +158,73 @@ class _LearningState extends State<Learning> {
                               },
                             ),
                             SizedBox(height: 20),
-                            Center(
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton(
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                ElevatedButton(
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
-                                      ScaffoldMessenger.of(
-                                        context,
-                                      ).showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Form Submitted successfully',
-                                          ),
-                                        ),
+                                      showDialog(
+                                        context: context,
+                                        builder:
+                                            (context) => AlertDialog(
+                                              title: const Text("Success"),
+                                              content: const Text(
+                                                "Submitted details successfully!",
+                                              ),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(
+                                                      context,
+                                                    ); // Close dialog
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder:
+                                                            (
+                                                              context,
+                                                            ) => ReportPage(
+                                                              firstname:
+                                                                  _firstNameController
+                                                                      .text,
+                                                              lastname:
+                                                                  _lastNameController
+                                                                      .text,
+                                                              mobilenumber:
+                                                                  _mobileController
+                                                                      .text,
+                                                              emailid:
+                                                                  _emailController
+                                                                      .text,
+                                                            ),
+                                                      ),
+                                                    );
+                                                  },
+                                                  child: const Text("OK"),
+                                                ),
+                                              ],
+                                            ),
                                       );
                                     }
                                   },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        Colors
+                                            .green, // Set background color to green
+                                  ),
                                   child: const Text(
                                     "submit",
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Color.fromARGB(
-                                      255,
-                                      125,
-                                      200,
-                                      125,
+                                      color:
+                                          Colors
+                                              .white, // Ensure text is visible on green
                                     ),
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
                           ],
                         ),
